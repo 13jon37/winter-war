@@ -35,8 +35,10 @@ void do_render(render_T* r)
     SDL_RenderPresent(r->renderer);
 }
 
-void game_loop(render_T* r)
+void game_loop()
 {
+    render_T* r = init_window("Winter War", DEF_WIND_WIDTH, DEF_WIND_HEIGHT);
+    
     SCENE_MANAGER = init_scene_manager();
     register_scenes(SCENE_MANAGER);
     
