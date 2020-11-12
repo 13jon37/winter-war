@@ -3,7 +3,7 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
-#include "render.h"
+#include "renderwindow.h"
 
 typedef struct ACTOR_STRUCT {
     float x, y;
