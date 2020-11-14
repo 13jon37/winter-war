@@ -7,6 +7,9 @@ render_T* init_window(const char* window_name, int w, int h)
 {
     render_T* r = calloc(1, sizeof(struct RENDER_WINDOW_STRUCT));
     
+    /* NOTE(1337): C library function void *calloc(size_t nitems, size_t size) 
+    calloc allocates requested memory and returns a pointer to it. Calloc sets allocated memory to zero, malloc does not. */
+    
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         printf("Failed to init video. Error: %s\n", SDL_GetError());
         SDL_Quit();
@@ -35,7 +38,7 @@ void do_render(render_T* r)
     SDL_RenderPresent(r->renderer);
 }
 
-void game_loop()
+void game_loop(void)
 {
     render_T* r = init_window("Winter War", DEF_WIND_WIDTH, DEF_WIND_HEIGHT);
     

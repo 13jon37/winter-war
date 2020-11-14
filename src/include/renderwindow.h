@@ -1,13 +1,10 @@
 #ifndef RENDER_WINDOW_H
 #define RENDER_WINDOW_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include "program_options.h"
 #include "scene_manager.h"
 #include "scene_registry.h"
 
@@ -26,7 +23,7 @@ render_T* init_window(const char* window_name, int w, int h);
 
 void do_render(render_T* r);
 
-void game_loop();
+void game_loop(void);
 
 void clean_up(render_T* r);
 
