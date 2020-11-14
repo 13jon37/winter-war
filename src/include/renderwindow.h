@@ -14,6 +14,8 @@
 typedef struct RENDER_WINDOW_STRUCT {
     SDL_Window* window;
     SDL_Renderer* renderer;
+    const char* cursor_name;
+    SDL_Texture* cursor;
 } render_T;
 
 // "Methods"
