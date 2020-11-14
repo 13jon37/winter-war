@@ -2,6 +2,8 @@
 
 bool event_processes(void)
 {
+    // TODO(NAME): implement key events 
+    
     SDL_Event event;
     bool running  = true;
     

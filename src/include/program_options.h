@@ -3,6 +3,18 @@
 #ifndef PROGRAM_OPTIONS_H
 #define PROGRAM_OPTIONS_H
 
+/* 
+Some Influences(does not mean I code like them):
+
+Dan Zaidan
+Ryan Fleury
+Handmade Hero - Casey
+Ianertson
+Randall
+Codergropher
+VertoStudio3D
+*/
+
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>

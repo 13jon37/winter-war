@@ -16,6 +16,7 @@ typedef struct RENDER_WINDOW_STRUCT {
     SDL_Renderer* renderer;
     const char* cursor_name;
     SDL_Texture* cursor;
+    i32 mouse_x, mouse_y;
 } render_T;
 
 // "Methods"

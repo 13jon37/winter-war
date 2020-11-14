@@ -18,3 +18,13 @@ void append_scene_scene_manager(scene_manager_T* sm, scene_T* s)
 {
     append_dynamic_list(sm->scenes, s);
 }
+
+void tick_scene_manager(scene_manager_T* sm)
+{
+    tick_scene(get_current_scene_scene_manager(sm));
+}
+
+void draw_scene_manager(scene_manager_T* sm)
+{
+    draw_scene(get_current_scene_scene_manager(sm));
+}

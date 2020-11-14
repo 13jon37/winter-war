@@ -9,4 +9,6 @@ void register_scenes(scene_manager_T* sm)
 * Register main menu scene
  * Register game scene
 */
+    
+    append_scene_scene_manager(sm, init_scene());
 }

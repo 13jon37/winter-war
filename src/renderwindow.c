@@ -1,8 +1,5 @@
 #include "include/renderwindow.h"
-#include "include/game_simulation.h"
-
-// Constant
-//scene_manager_T* SCENE_MANAGER;
+#include "include/actor.h"
 
 render_T* init_window(const char* window_name, int w, int h)
 {
@@ -38,11 +35,17 @@ render_T* init_window(const char* window_name, int w, int h)
     // Load in cursor png
     SDL_Surface* surface = IMG_Load(r->cursor_name);
     
-    if (!surface)
+    if (!surface) {
         printf("Failed to load SDL surface.\n");
+        exit(1);
+    }
     
     r->cursor = SDL_CreateTextureFromSurface(r->renderer, surface);
     SDL_FreeSurface(surface); // free surface to conserve resources because all we want is the texture
+    
+    // Set mouse positions to 0 because its our "constructor" init
+    r->mouse_x = 0;
+    r->mouse_y = 0;
     
     return r;
 }
@@ -53,20 +56,13 @@ void do_render(render_T* r)
     
     SDL_RenderClear(r->renderer);
     
-    // TODO(NAME): Clean up a LOT!
-    int mouse_x, mouse_y;
-    SDL_GetMouseState(&mouse_x, &mouse_y);
+    // Get mouse pos
+    SDL_GetMouseState(&r->mouse_x, &r->mouse_y);
     
-    SDL_Rect cursor_rect = { mouse_x, mouse_y, 64, 64 };
+    SDL_Rect cursor_rect = { r->mouse_x, r->mouse_y, 64, 64 };
     SDL_RenderCopy(r->renderer, r->cursor, 0, &cursor_rect);
     
     SDL_SetRenderDrawColor(r->renderer, 255, 255, 5, 255);
-    
-    
-    for (u32 i = 0; i < 10; i++) {
-        SDL_Rect box = { i, i, 32 + i, 32 + i };
-        SDL_RenderFillRect(r->renderer, &box);
-    }
     
     SDL_RenderPresent(r->renderer);
 }

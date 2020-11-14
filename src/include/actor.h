@@ -7,11 +7,12 @@
 
 typedef struct ACTOR_STRUCT {
     float x, y;
+    SDL_Renderer* renderer;
 } actor_T;
 
-actor_T* init_actor(float x, float y);
+actor_T* init_actor(float x, float y, render_T* r);
 
-void update_actor(actor_T* a);
+void tick_actor(actor_T* a);
 
 void draw_actor(actor_T* a);
 

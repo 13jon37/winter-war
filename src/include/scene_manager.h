@@ -5,7 +5,6 @@
 
 #include "dynamic_list.h"
 #include "scene.h"
-#include "scene_manager.h"
 
 typedef struct SCENE_MANAGER_STRUCT {
     int scene_index;
@@ -17,5 +16,9 @@ scene_manager_T* init_scene_manager();
 scene_T* get_current_scene_scene_manager(scene_manager_T* sm);
 
 void append_scene_scene_manager(scene_manager_T* sm, scene_T* s);
+
+void tick_scene_manager(scene_manager_T* sm);
+
+void draw_scene_manager(scene_manager_T* sm);
 
 #endif //SCENE_MANAGER_H
