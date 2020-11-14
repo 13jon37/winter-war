@@ -2,7 +2,7 @@
 #include "include/game_simulation.h"
 
 // Constant
-scene_manager_T* SCENE_MANAGER;
+//scene_manager_T* SCENE_MANAGER;
 
 render_T* init_window(const char* window_name, int w, int h)
 {
@@ -53,35 +53,22 @@ void do_render(render_T* r)
     
     SDL_RenderClear(r->renderer);
     
-    //SDL_SetRenderDrawColor(r->renderer, 255, 255, 255, 255);
-    
+    // TODO(NAME): Clean up a LOT!
     int mouse_x, mouse_y;
     SDL_GetMouseState(&mouse_x, &mouse_y);
     
     SDL_Rect cursor_rect = { mouse_x, mouse_y, 64, 64 };
     SDL_RenderCopy(r->renderer, r->cursor, 0, &cursor_rect);
     
-    SDL_RenderPresent(r->renderer);
-}
-
-void game_loop(void)
-{
-    render_T* r = init_window("Winter War", DEF_WIND_WIDTH, DEF_WIND_HEIGHT);
+    SDL_SetRenderDrawColor(r->renderer, 255, 255, 5, 255);
     
-    SCENE_MANAGER = init_scene_manager();
-    register_scenes(SCENE_MANAGER);
     
-    bool running = true;
-    
-    while (running)
-    {
-        // Inlcudes quit condtionals and will probably include key events
-        running = event_processes();
-        
-        do_render(r);
+    for (u32 i = 0; i < 10; i++) {
+        SDL_Rect box = { i, i, 32 + i, 32 + i };
+        SDL_RenderFillRect(r->renderer, &box);
     }
     
-    clean_up(r);
+    SDL_RenderPresent(r->renderer);
 }
 
 void clean_up(render_T* r)
@@ -90,6 +77,7 @@ void clean_up(render_T* r)
     SDL_DestroyRenderer(r->renderer);
     SDL_DestroyTexture(r->cursor);
     free(r);
+    
     SDL_Quit();
 }
 

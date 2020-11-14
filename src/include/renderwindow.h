@@ -25,8 +25,6 @@ render_T* init_window(const char* window_name, int w, int h);
 
 void do_render(render_T* r);
 
-void game_loop(void);
-
 void clean_up(render_T* r);
 
 #endif
